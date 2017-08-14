@@ -1,0 +1,15 @@
+ad36ec,127.0.0.1,GET,http://127.0.0.1:8000/api/saveteacher,1502725091,121933,200
+121933,127.0.0.1,POST,http://127.0.0.1:8000/api/saveteacher,1502725091,,500
+3b38c3,127.0.0.1,GET,http://127.0.0.1:8000/api/saveteacher,1502725822,bd5aee,200
+bd5aee,127.0.0.1,POST,http://127.0.0.1:8000/api/saveteacher,1502725822,,500
+edf9e1,127.0.0.1,GET,http://127.0.0.1:8000/api/saveteacher,1502725860,025e3a,200
+025e3a,127.0.0.1,POST,http://127.0.0.1:8000/api/saveteacher,1502725860,,500
+72bacc,127.0.0.1,GET,http://127.0.0.1:8000/api/saveteacher,1502726035,4ff4bc,200
+4ff4bc,127.0.0.1,POST,http://127.0.0.1:8000/api/saveteacher,1502726036,,500
+e12b41,127.0.0.1,POST,http://127.0.0.1:8000/api/teacher/signup,1502726281,,200
+690743,127.0.0.1,GET,http://127.0.0.1:8000/api/saveteacher,1502726307,176fd8,200
+176fd8,127.0.0.1,POST,http://127.0.0.1:8000/api/saveteacher,1502726307,,500
+e9c096,127.0.0.1,POST,http://127.0.0.1:8000/api/teacher/signup,1502726517,,200
+8146b1,127.0.0.1,POST,http://127.0.0.1:8000/api/teacher/signup,1502726536,,200
+17b044,127.0.0.1,POST,http://127.0.0.1:8000/api/teacher/signup,1502726607,,200
+1981ef,127.0.0.1,POST,http://127.0.0.1:8000/api/teacher/signup,1502726731,,200
