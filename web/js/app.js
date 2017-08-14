@@ -22,7 +22,8 @@ angular.module('app', [
    'chart.js',
    'uiGmapgoogle-maps',
    'ngTable',
-   'ngFileUpload'
+   'ngFileUpload',
+   'cgNotify'
     //'angular-loading-bar', 
     //'ng-token-auth',
     //'ngFileUpload',

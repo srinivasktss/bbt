@@ -40,8 +40,8 @@ class UniversityController extends Controller
 			    		    	    	  
 		
 		$em = $this->getDoctrine()->getManager();		
-		//$emails_list = $teacher['mail_list'];
-		//$emails = explode(',', $emails_list);		
+		$emails_list = $teacher['mail_list'];
+		$emails = explode(',', $emails_list);		
 
 		$group = new Group();
 		$group->setTeacher_id($teacher['id']);
@@ -57,7 +57,7 @@ class UniversityController extends Controller
 		$em->persist($group);
 	    $em->flush();
 
-	    /*foreach ($emails as $email) 
+	    foreach ($emails as $email) 
 	    {
 	    	$GM = new GroupEmail;
 	    	$GM->setGroup_id($group->getId());
@@ -65,8 +65,8 @@ class UniversityController extends Controller
 	    	$GM->setCreated_by(1);
 	    	$em->persist($GM);
 	    	$em->flush();
-	    }*/
-	    if($file)
+	    }
+	    if(0)
 		{
 			$reader = $this->get("arodiss.xls.reader");
 			$content = $reader->readAll($file);

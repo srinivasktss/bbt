@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('app').controller('homepage', ['$scope','$document','$rootScope','$stateParams','$http','$state','$timeout','uiGmapGoogleMapApi','$filter','Upload',
-    function($scope,$document,$rootScope,$stateParams,$http,$state,$timeout,uiGmapGoogleMapApi,$filter,Upload) {
+angular.module('app').controller('homepage', ['$scope','$document','$rootScope','$stateParams','$http','$state','$timeout','uiGmapGoogleMapApi','$filter','Upload','notify',
+    function($scope,$document,$rootScope,$stateParams,$http,$state,$timeout,uiGmapGoogleMapApi,$filter,Upload,notify) {
         
         $scope.profileName ="Home";
         $scope.c_next_index = 1;
@@ -61,7 +61,104 @@ angular.module('app').controller('homepage', ['$scope','$document','$rootScope',
 		}
 
 		$scope.start = function()
-		{			
+		{
+			if($scope.teacher.mail_list == undefined || $scope.teacher.mail_list == null)
+			{				
+				notify({
+					message:'Atleast one mail Should be there',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			var list = $scope.teacher.mail_list.split(',');
+			var emailregex = /\S+@\S+\.\S+/;
+      
+			for (var i = 0; i < list.length; i++) 
+			{
+				if(list[i] == null)
+				{
+					notify({
+						message:'Should Seperate by single comma',
+						classes:'alert-danger',
+						duration:2000
+					});
+					return;
+				}
+				if(!list[i].match(emailregex))
+				{
+					notify({
+						message:'Invalid Mail Id',
+						classes:'alert-danger',
+						duration:2000
+					});
+				return;
+				}
+			}
+			if($scope.teacher.group_name == undefined || $scope.teacher.group_name == null)
+			{				
+				notify({
+					message:'Fill Group Name',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.start_date == undefined || $scope.teacher.start_date == null)
+			{				
+				notify({
+					message:'Fill Start Date',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.end_date == undefined || $scope.teacher.end_date == null)
+			{				
+				notify({
+					message:'Fill End Date',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.assets == undefined || $scope.teacher.assets == 0)
+			{				
+				notify({
+					message:'Select Assets',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.league_name == undefined || $scope.teacher.league_name == null)
+			{				
+				notify({
+					message:'Enter League Name',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.virtual_money == undefined || $scope.teacher.virtual_money == null)
+			{				
+				notify({
+					message:'Enter Virtual Money',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+			if($scope.teacher.feedback == undefined || $scope.teacher.feedback == null)
+			{				
+				notify({
+					message:'Select Feedback',
+					classes:'alert-danger',
+					duration:2000
+				});
+				return;
+			}
+
 			console.log($scope.teacher)
 			if($scope.teacher.start_date != undefined && $scope.teacher.start_date == null)
 				$scope.teacher.start_date = $filter('date')($scope.teacher.start_date, 'yyyy-MM-dd');
@@ -81,7 +178,7 @@ angular.module('app').controller('homepage', ['$scope','$document','$rootScope',
 				console.log(success)
 				if(success.data.status == 'success')
 				{
-					$('$addStudent').modal('hide');
+					$('#addStudent').modal('hide');
 				}				
 			},function(error){
 
@@ -90,21 +187,27 @@ angular.module('app').controller('homepage', ['$scope','$document','$rootScope',
 
 		$scope.teacher_signup = function()
 		{
-			console.log($scope.teacher)
-			$http({
-				method: 'POST',
-				url: 'api/teacher/signup',
-				data:$scope.teacher
-			}).then(function(success){
-				console.log(success)
-				if(success.data.status == 'success')
-				{
-					$scope.teacher.id = success.data.teacher_id;
-					$('#addStudent').modal('show');					
-				}
-			},function(error){
+			
+			if($("#signup").valid())
+			{				
+				console.log($scope.teacher)
+				$http({
+					method: 'POST',
+					url: 'api/teacher/signup',
+					data:$scope.teacher
+				}).then(function(success){
+					console.log(success)
+					if(success.data.status == 'success')
+					{
+						$scope.teacher.id = success.data.teacher_id;
+						$('#addStudent').modal('show');					
+					}
+				},function(error){
 
-			})
-		} 
+				});
+			}
+		}
+
+		$("#signup").validate();
     }
     ]);

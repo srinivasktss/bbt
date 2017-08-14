@@ -61,6 +61,7 @@
 								</div>
 							</div>
 							<div class="card_body">
+								<form action="javascript:;" id="signup" name="signup" autocomplete="off" novalidate>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 										<div class="form_input_cont">
@@ -86,7 +87,7 @@
 									</div>
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 										<div class="form_input_cont">
-											<input class="form_inputtext inp_full" placeholder="Password" type="text" ng-model="teacher.university" name="university" required>
+											<input class="form_inputtext inp_full" placeholder="University" type="text" ng-model="teacher.university" name="university" required>
 										</div>
 									</div>
 									<!-- <div class="form_h4_text">
@@ -142,6 +143,7 @@
 										</div>
 									</div>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -378,7 +380,7 @@
         					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         						<div class="modal_but_cont">
         							<button class="modal_nxt_bt" ng-click="shiftTab(2)">Back</button>
-        							<button class="modal_nxt_bt" data-dismiss="modal" ng-click="start()">Start Now</button>
+        							<button class="modal_nxt_bt" ng-click="start()">Start Now</button>
         						</div>
         					</div>
         				</div>        				
